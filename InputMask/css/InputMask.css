@@ -1,0 +1,9 @@
+.InputMaskNamespace\.InputMask .container,
+.InputMaskNamespace\.InputMask #data-js-input {
+    width: 100%;
+    height: 100%;
+}
+
+.InputMaskNamespace\.InputMask :host {
+    display: block;
+}

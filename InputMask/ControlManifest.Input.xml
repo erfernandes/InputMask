@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest>
+  <control namespace="InputMaskNamespace" constructor="InputMask" version="0.0.1" display-name-key="InputMask" description-key="InputMask description" control-type="standard" >
+    <external-service-usage enabled="false"></external-service-usage>
+    <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
+    <property name="maskPattern" display-name-key="Mask Pattern" description-key="Pattern of the mask input" of-type="SingleLine.Text" usage="input" required="true" />
+    <property name="default" display-name-key="Default" description-key="Default value of the input" of-type="SingleLine.Text" usage="bound" required="false" />
+    <property name="maskedValue" display-name-key="Masked Value" description-key="Returns the value of the applied input mask" of-type="SingleLine.Text" usage="bound" hidden="true" default-value="" />
+    <property name="rawValue" display-name-key="Raw Value" description-key="Returns the value of the applied input mask" of-type="SingleLine.Text" usage="bound" hidden="true" default-value="" />
+
+    <property name="Required" display-name-key="Input required" description-key="Input required" usage="input" of-type="Enum" required="false" hidden="false">
+      <value name="Yes" display-name-key="Yes" description-key="Yes_Required">Yes</value>
+      <value name="No" display-name-key="No" description-key="No_Required" default="true">No</value>
+    </property>
+
+    <property name="Valid" display-name-key="Input valid" description-key="Input valid" usage="bound" of-type="Enum" required="false" hidden="true">
+      <value name="Yes" display-name-key="Yes" description-key="Yes_Valid" default="true">Yes</value>
+      <value name="No" display-name-key="No" description-key="No_Valid">No</value>
+    </property>
+
+    <!-- input style properties -->
+    <property name="fontSize" display-name-key="Font size" description-key="Font size of the input" of-type="SingleLine.Text" usage="input" required="true" hidden="false" default-value="14px" />
+    <property name="fontFamily" display-name-key="Font family" description-key="Font family of the input" of-type="SingleLine.Text" usage="input" required="true" hidden="false" default-value="Segoe UI" />
+    <property name="fontStyle" display-name-key="Font style" description-key="Font style of the input" usage="input" of-type="Enum" required="false" hidden="true">
+      <value name="normal" display-name-key="Normal" description-key="Normal" default="true">Normal</value>
+      <value name="italic" display-name-key="Italic" description-key="Italic">Italic</value>
+    </property>
+    <property name="fontWeight" display-name-key="Font weight" description-key="Font weight of the input" usage="input" of-type="Enum" required="false" hidden="true">
+      <value name="normal" display-name-key="Normal" description-key="Normal" default="true">Normal</value>
+      <value name="lighter" display-name-key="Lighter" description-key="Lighter">Lighter</value>
+      <value name="bold" display-name-key="Bold" description-key="Bold">Bold</value>
+      <value name="bolder" display-name-key="Bolder" description-key="Bolder">Bolder</value>
+      <value name="100" display-name-key="100" description-key="100">100</value>
+      <value name="200" display-name-key="200" description-key="200">200</value>
+      <value name="300" display-name-key="300" description-key="300">300</value>
+      <value name="400" display-name-key="400" description-key="400">400</value>
+      <value name="500" display-name-key="500" description-key="500">500</value>
+      <value name="600" display-name-key="600" description-key="600">600</value>
+      <value name="700" display-name-key="700" description-key="700">700</value>
+      <value name="800" display-name-key="800" description-key="800">800</value>
+      <value name="900" display-name-key="900" description-key="900">900</value>
+    </property>
+    <property name="borderColor" display-name-key="Border color" description-key="Border color of the input" of-type="SingleLine.Text" usage="input" required="true" hidden="false" default-value="#00126B" />
+    <property name="borderWidth" display-name-key="Border width" description-key="Border width of the input" of-type="SingleLine.Text" usage="input" required="true" hidden="false" default-value="1px" />
+    <property name="borderStyle" display-name-key="Border style" description-key="Border style of the input" of-type="SingleLine.Text" usage="input" required="true" hidden="false" default-value="solid" />
+    <property name="borderRadius" display-name-key="Border radius" description-key="Border radius of the input" of-type="SingleLine.Text" usage="input" required="true" hidden="false" default-value="5px" />
+    <property name="paddingLeft" display-name-key="Padding left" description-key="Input padding left" of-type="SingleLine.Text" usage="input" required="true" hidden="false" default-value="5px" />
+    <property name="paddingTop" display-name-key="Padding top" description-key="Input padding top" of-type="SingleLine.Text" usage="input" required="true" hidden="false" default-value="5px" />
+    <property name="paddingRight" display-name-key="Padding right" description-key="Input padding right" of-type="SingleLine.Text" usage="input" required="true" hidden="false" default-value="5px" />
+    <property name="paddingBottom" display-name-key="Padding bottom" description-key="Input padding bottom" of-type="SingleLine.Text" usage="input" required="true" hidden="false" default-value="5px" />
+    <property name="TextAlign" display-name-key="Text align" description-key="Text alignment inside the input" usage="input" of-type="Enum" required="false" hidden="true">
+      <value name="Left" display-name-key="Left" description-key="Left_Align" default="true">Left</value>
+      <value name="Center" display-name-key="Center" description-key="Center_Align">Center</value>
+      <value name="Right" display-name-key="Right" description-key="Right_Align">Right</value>
+    </property>
+    <!--
+      Property node's of-type attribute can be of-type-group attribute.
+      Example:
+      <type-group name="numbers">
+        <type>Whole.None</type>
+        <type>Currency</type>
+        <type>FP</type>
+        <type>Decimal</type>
+      </type-group>
+      <property name="sampleProperty" display-name-key="Property_Display_Key" description-key="Property_Desc_Key" of-type-group="numbers" usage="bound" required="true" />
+    -->
+    <resources>
+      <code path="index.ts" order="1"/>
+      <css path="css/InputMask.css" order="1" />
+      <!-- UNCOMMENT TO ADD MORE RESOURCES
+      <css path="css/InputMask.css" order="1" />
+      <resx path="strings/InputMask.1033.resx" version="1.0.0" />
+      -->
+    </resources>
+    <!-- UNCOMMENT TO ENABLE THE SPECIFIED API
+    <feature-usage>
+      <uses-feature name="Device.captureAudio" required="true" />
+      <uses-feature name="Device.captureImage" required="true" />
+      <uses-feature name="Device.captureVideo" required="true" />
+      <uses-feature name="Device.getBarcodeValue" required="true" />
+      <uses-feature name="Device.getCurrentPosition" required="true" />
+      <uses-feature name="Device.pickFile" required="true" />
+      <uses-feature name="Utility" required="true" />
+      <uses-feature name="WebAPI" required="true" />
+    </feature-usage>
+    -->
+  </control>
+</manifest>
